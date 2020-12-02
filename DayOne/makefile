@@ -1,2 +1,2 @@
-DayOne: DayOne.o
+DayOne.exe: DayOne.o
 	g++ -o $@ $^
