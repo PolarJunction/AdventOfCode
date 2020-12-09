@@ -1,53 +1,69 @@
-/* Day Eight - 2020 */
+/* Day Nine - 2020 */
 #include <fstream>
-#include <deque>
 #include <vector>
 #include <iterator>
 
 bool b_has_sum(std::vector<long>::iterator it_start, std::vector<long>::iterator it_end, long l_val)
 {
-    for (std::vector<long>::iterator it_i = it_start; it_i != it_end; ++it_i)
+    for (std::vector<long>::iterator it_i = it_start; it_i < it_end; ++it_i)
     {
-        for (std::vector<long>::iterator it_j = it_start; it_j != it_end; ++it_j)
+        for (std::vector<long>::iterator it_j = it_start; it_j < it_end; ++it_j)
         {
-            if(*it_i + *it_j == l_val && *it_i != *it_j)
-            {
-                return true;
-            }
+            if((*it_i + *it_j == l_val) && (*it_i != *it_j)) return true;
         }
     }
-    
     return false;
 }
 
-// Check if an i_val has a sum in the queue
-bool x_has_sum(const std::deque<long> &q_vals, long l_val)
+
+void v_find_weakness(std::vector<long> v_vals, long l_tgt)
 {
-    for (auto i : q_vals)
+    int i_idx = 0;
+
+    while (i_idx < v_vals.size())
     {
-        for (auto j : q_vals)
+        long l_sum = 0;
+
+        for (int i=i_idx; i<v_vals.size(); i++)
         {
-            if (i + j == l_val && i != j)
+            l_sum += v_vals[i];
+
+            if (l_sum > l_tgt)
             {
-                printf("True - i: %u, j: %u, i_val: %u, \n", i, j, l_val);
-                return true;
+                break;
+            }
+            else if (l_sum == l_tgt) // Found the weakness
+            {
+                long l_smallest = v_vals[i_idx];
+                long l_largest = v_vals[i_idx];
+
+                // We need to find the smallest/largest across the range
+                for (int j=i_idx; j<=i; j++)
+                {
+                    if (v_vals[j] < l_smallest) l_smallest = v_vals[j];
+                    if (v_vals[j] > l_largest) l_largest = v_vals[j];
+                }
+
+                printf("P2 - Weakness: %ld\n", (l_smallest + l_largest));
+
+                i_idx = v_vals.size();
+                break;
             }
         }
-    }
 
-    return false;
+        i_idx++;
+    }
 }
 
-// Return true if we didn't hit an infinite loop
+
 int main ()
 {
     // Process the input file
     std::ifstream in("input.txt");
+    std::vector<long> v_vals;
 
     int i_preamble = 25;
-    long l_tmp;
-    std::deque<long> q_vals;
-    std::vector<long> v_vals;
+    long l_tmp = 0;
 
     // Decode the input file into a vector of longs
     while( !in.eof() )
@@ -57,36 +73,18 @@ int main ()
     }
 
     // Check each value starting from the preamble for a sum
-    for(int i=i_preamble-1; i < v_vals.size(); i++)
+    for(int i=i_preamble; i < v_vals.size(); i++)
     {
-        if(b_has_sum(v_vals.begin()+i, v_vals.begin()+i+i_preamble, v_vals[i+1]) == false)
+        // We pass a span of the total vector to be checked
+        if(b_has_sum(v_vals.begin()+i-i_preamble, v_vals.begin()+i, v_vals[i]) == false)
         {
             // Found the first number without a sum, print it and break
-            printf("P1 - Val: %ld\n", v_vals[i+1]);
+            printf("P1 - Val: %ld\n", v_vals[i]);
+            l_tmp = v_vals[i];
             break;
         }
     }
 
-        // // If we have reached the preamble size, we can start checking for the weakness
-        // if (q_vals.size() == i_preamble)
-        // {
-        //     // if (b_has_sum(q_vals, l_tmp) == false)
-        //     {
-        //         // We found the first number without a sum, print it and break
-        //         printf("P1 - Val: %ld\n", l_tmp);
-        //         break;
-        //     }
-        // }
-
-        // // Populate the queue
-        // q_vals.push_back(l_tmp);
-
-        // // Maintain the size of the queue
-        // if (q_vals.size() > i_preamble)
-        // {
-        //     printf("i_tmp: %ld\n", l_tmp);
-        //     q_vals.pop_front();
-        // }
-    // }
-
+    // Now that we have the target value, we need to find a contiguous sum
+    v_find_weakness(v_vals, l_tmp);
 }
