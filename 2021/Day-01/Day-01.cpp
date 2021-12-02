@@ -1,18 +1,10 @@
+/* Day One - 2021 */
 #define CATCH_CONFIG_MAIN
-/* #define CATCH_CONFIG_RUNNER */
 #include "../lib/catch.hpp"
 
-/* Day One - 2021 */
 #include <fstream>
 #include <iterator>
 #include <vector>
-
-
-/* int main( int argc, char* argv[] ) { */
-/*   // your setup ... */
-
-/*   return Catch::Session().run( argc, argv ); */
-/* } */
 
 std::vector<int> parseInput(std::string filepath)
 {
@@ -53,7 +45,6 @@ int solvePartTwo(std::vector<int> &data)
 }
 
 // Tests
-
 TEST_CASE("Part One - Test Data")
 {
     std::vector<int> data = parseInput("test-01.txt");
