@@ -32,7 +32,6 @@ std::vector<Instruction> parseInput(std::string filepath)
     return data;
 }
 
-// TBD
 int solvePartOne(std::vector<Instruction> &data)
 {
     int distance = 0;
@@ -57,7 +56,6 @@ int solvePartOne(std::vector<Instruction> &data)
     return (distance * depth);
 }
 
-// TBD
 int solvePartTwo(std::vector<Instruction> &data)
 {
     int distance = 0;
