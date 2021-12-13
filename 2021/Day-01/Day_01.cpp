@@ -1,6 +1,6 @@
 /* Day One - 2021 */
 #define CATCH_CONFIG_MAIN
-#include "../lib/catch.hpp"
+#include <catch2/catch_test_macros.hpp>
 
 #include <fstream>
 #include <iterator>
@@ -47,24 +47,24 @@ int solvePartTwo(std::vector<int> &data)
 // Tests
 TEST_CASE("Part One - Test Data")
 {
-    std::vector<int> data = parseInput("test-01.txt");
+    std::vector<int> data = parseInput("../test-01.txt");
     REQUIRE(solvePartOne(data) == 7);
 }
 
 TEST_CASE("Part One - Input Data")
 {
-    std::vector<int> data = parseInput("input.txt");
+    std::vector<int> data = parseInput("../input.txt");
     REQUIRE(solvePartOne(data) == 1502);
 }
 
 TEST_CASE("Part Two - Test Data")
 {
-    std::vector<int> data = parseInput("test-01.txt");
+    std::vector<int> data = parseInput("../test-01.txt");
     REQUIRE(solvePartTwo(data) == 5);
 }
 
 TEST_CASE("Part Two - Input Data")
 {
-    std::vector<int> data = parseInput("input.txt");
+    std::vector<int> data = parseInput("../input.txt");
     REQUIRE(solvePartTwo(data) == 1538);
 }
