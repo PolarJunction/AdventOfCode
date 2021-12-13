@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(Day_03)
+project(Day_02)
 
 Include(FetchContent)
 
@@ -13,5 +13,5 @@ FetchContent_MakeAvailable(Catch2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Day_03 Day-03.cpp)
-target_link_libraries(Day_03 PRIVATE Catch2::Catch2WithMain)
+add_executable(Day_02 Day-02.cpp)
+target_link_libraries(Day_02 PRIVATE Catch2::Catch2WithMain)

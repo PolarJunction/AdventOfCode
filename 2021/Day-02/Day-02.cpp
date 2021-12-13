@@ -85,24 +85,24 @@ int solvePartTwo(std::vector<Instruction> &data)
 // Tests
 TEST_CASE("Part One - Test Data")
 {
-    std::vector<Instruction> data = parseInput("test-01.txt");
+    std::vector<Instruction> data = parseInput("../test-01.txt");
     REQUIRE(solvePartOne(data) == 150);
 }
 
 TEST_CASE("Part One - Input Data")
 {
-    std::vector<Instruction> data = parseInput("input.txt");
+    std::vector<Instruction> data = parseInput("../input.txt");
     REQUIRE(solvePartOne(data) == 2272262);
 }
 
 TEST_CASE("Part Two - Test Data")
 {
-    std::vector<Instruction> data = parseInput("test-01.txt");
+    std::vector<Instruction> data = parseInput("../test-01.txt");
     REQUIRE(solvePartTwo(data) == 900);
 }
 
 TEST_CASE("Part Two - Input Data")
 {
-    std::vector<Instruction> data = parseInput("input.txt");
+    std::vector<Instruction> data = parseInput("../input.txt");
     REQUIRE(solvePartTwo(data) == 2134882034);
 }
