@@ -1,17 +1,15 @@
 /* Day Three - 2021 */
 #define CATCH_CONFIG_MAIN
-#include "../lib/catch.hpp"
-
+#include <catch2/catch_test_macros.hpp>
 #include <fstream>
 #include <vector>
 
-std::vector<std::string> parseInput(std::string filepath)
+std::vector<std::string> parseInput(const std::string& filepath)
 {
     std::ifstream in(filepath);
-    std::vector<std::string> data;
-    std::string line;
+    std::vector<std::string> data = {};
 
-    while(std::getline(in, line))
+    for(std::string line; getline(in, line);)
     {
         data.push_back(line);
     }
@@ -19,7 +17,7 @@ std::vector<std::string> parseInput(std::string filepath)
     return data;
 }
 
-int binToInt(std::string inputBinary)
+int binToInt(const std::string& inputBinary)
 {
     return std::stoi(inputBinary, nullptr, 2);
 }
@@ -64,7 +62,7 @@ char getCommonBit(int bitCount, int dataSize, bool mostCommon, char equalChar)
 std::string getCommonBitPattern(std::vector<std::string> &data, bool mostCommon, char equalChar)
 {
     std::vector<int> bitCount = getBitCount(data);
-    std::string pattern = "";
+    std::string pattern;
 
     for(auto & count: bitCount)
     {
@@ -154,26 +152,26 @@ TEST_CASE("CommonBit")
 
 TEST_CASE("CommonBitPattern")
 {
-    std::vector<std::string> data = parseInput("test-01.txt");
+    std::vector<std::string> data = parseInput("../test-01.txt");
     REQUIRE(getCommonBitPattern(data, true, '1') == "10110");
     REQUIRE(getCommonBitPattern(data, false, '0') == "01001");
 }
 
 TEST_CASE("P1_TestData")
 {
-    std::vector<std::string> data = parseInput("test-01.txt");
+    std::vector<std::string> data = parseInput("../test-01.txt");
     REQUIRE(solvePartOne(data) == 198);
 }
 
 TEST_CASE("P1_InputData")
 {
-    std::vector<std::string> data = parseInput("input.txt");
+    std::vector<std::string> data = parseInput("../input.txt");
     REQUIRE(solvePartOne(data) == 1307354);
 }
 
 TEST_CASE("P2_TestData")
 {
-    std::vector<std::string> data = parseInput("test-01.txt");
+    std::vector<std::string> data = parseInput("../test-01.txt");
     // Oxygen Rating
     REQUIRE(getRating(data, true, '1') == 23);
     // Scrubber Rating
@@ -184,6 +182,6 @@ TEST_CASE("P2_TestData")
 
 TEST_CASE("P2_InputData")
 {
-    std::vector<std::string> data = parseInput("input.txt");
+    std::vector<std::string> data = parseInput("../input.txt");
     REQUIRE(solvePartTwo(data) == 482500);
 }
