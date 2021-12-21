@@ -69,10 +69,12 @@ cppFile.write("""/* Day_%s - %s */
 std::vector<int> parseInput(std::string filepath)
 {
     std::ifstream in(filepath);
-    std::istream_iterator<int> start(in), end;
-    std::vector<int> t_input(start, end);
+    std::vector<std::string> fileData;
 
-    return t_input;
+    for (std::string line; std::getline(in, line); /* */)
+    {
+        fileData.push_back(line);
+    }
 }
 
 // TBD
