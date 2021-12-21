@@ -90,25 +90,25 @@ int solvePartTwo(std::vector<int> &data)
 }
 
 // Tests
-TEST_CASE("Part One - Test Data")
+TEST_CASE("P1_TestData")
 {
     std::vector<int> data = parseInput("../test-01.txt");
     REQUIRE(solvePartOne(data) == 999);
 }
 
-TEST_CASE("Part One - Input Data")
+TEST_CASE("P1_InputData")
 {
     std::vector<int> data = parseInput("../input.txt");
     REQUIRE(solvePartOne(data) == 999);
 }
 
-TEST_CASE("Part Two - Test Data")
+TEST_CASE("P2_TestData")
 {
     std::vector<int> data = parseInput("../test-01.txt");
     REQUIRE(solvePartTwo(data) == 999);
 }
 
-TEST_CASE("Part Two - Input Data")
+TEST_CASE("P2_InputData")
 {
     std::vector<int> data = parseInput("../input.txt");
     REQUIRE(solvePartTwo(data) == 999);
