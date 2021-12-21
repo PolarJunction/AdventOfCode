@@ -75,6 +75,8 @@ std::vector<int> parseInput(std::string filepath)
     {
         fileData.push_back(line);
     }
+
+    return {};
 }
 
 // TBD
