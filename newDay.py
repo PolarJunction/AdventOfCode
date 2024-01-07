@@ -66,7 +66,7 @@ cppFile.write("""/* Day_%s - %s */
 #include <iterator>
 #include <vector>
 
-std::vector<int> parseInput(std::string filepath)
+std::vector<std::string> parseInput(std::string filepath)
 {
     std::ifstream in(filepath);
     std::vector<std::string> fileData;
@@ -76,17 +76,17 @@ std::vector<int> parseInput(std::string filepath)
         fileData.push_back(line);
     }
 
-    return {};
+    return fileData;
 }
 
 // TBD
-int solvePartOne(std::vector<int> &data)
+int solvePartOne(std::vector<std::string> &data)
 {
     return 0;
 }
 
 // TBD
-int solvePartTwo(std::vector<int> &data)
+int solvePartTwo(std::vector<std::string> &data)
 {
     return 0;
 }
@@ -94,19 +94,19 @@ int solvePartTwo(std::vector<int> &data)
 // Tests
 TEST_CASE("P1_TestData")
 {
-    std::vector<int> data = parseInput("../test-01.txt");
+    std::vector<std::string> data = parseInput("../test-01.txt");
     REQUIRE(solvePartOne(data) == 999);
 }
 
 TEST_CASE("P1_InputData")
 {
-    std::vector<int> data = parseInput("../input.txt");
+    std::vector<std::string> data = parseInput("../input.txt");
     REQUIRE(solvePartOne(data) == 999);
 }
 
 TEST_CASE("P2_TestData")
 {
-    std::vector<int> data = parseInput("../test-01.txt");
+    std::vector<std::string> data = parseInput("../test-01.txt");
     REQUIRE(solvePartTwo(data) == 999);
 }
 

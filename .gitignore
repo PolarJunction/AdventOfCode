@@ -33,4 +33,8 @@
 
 # IDE
 .idea/
+.vs/
 cmake-build*
+build*
+.cmake
+
